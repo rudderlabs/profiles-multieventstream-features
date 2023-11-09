@@ -341,6 +341,6 @@ models:
       validity_time: 24h # 1 day
       entity_key: user
       edge_sources:
-        - from: inputs/rsIdentifies
-        - from: inputs/rsTracks
-        - from: inputs/rsPages
+        - from: models/rsIdentifies
+        - from: models/rsTracks
+        - from: models/rsPages
