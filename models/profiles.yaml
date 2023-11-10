@@ -334,3 +334,12 @@ models:
         - campaigns_list
         - mediums_list
         - sources_list
+  - name: rudder_user_id_stitcher
+    model_type: id_stitcher
+    model_spec:
+      validity_time: 24h # 1 day
+      entity_key: user
+      edge_sources:
+        - from: models/rsIdentifies
+        - from: models/rsTracks
+        - from: models/rsPages
