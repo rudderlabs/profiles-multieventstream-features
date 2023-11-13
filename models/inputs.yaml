@@ -68,7 +68,7 @@ inputs:
         - name: anonymous_id
         - name: email
     app_defaults:
-      table: RUDDERSTACK_TEST_DB.DATA_APPS_SIMULATED_SHOPIFY.IDENTIFIES_INVALID
+      table: RUDDERSTACK_TEST_DB.DATA_APPS_SIMULATED_SHOPIFY.IDENTIFIES
       occurred_at_col: timestamp
       ids:
         - select: "user_id"
