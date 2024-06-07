@@ -17,7 +17,7 @@ models:
             label_column: is_churned_7_days # Name of column for which we want to find predictions
             label_value: 1 # Value of label column for which prediction is generated
             prediction_horizon_days: 7 # Number of days in future for which we want to predict
-            output_profiles_ml_model: *model_name_7_days # Name of output model based on current model to dinstinguish between multiple models
+            output_profiles_ml_model: &model_name_7_days churn_7_days_model
             eligible_users:
             inputs:
               - packages/base_features/models/rudder_user_base_features
@@ -30,17 +30,37 @@ models:
         inputs:
           - models/rudder_user_base_features
         config:
-          data: *model_data_configs_7_days # Use the same config as training
-          preprocessing: *model_prep_configs_7_days # Use the same config as training
+          data: &model_data_configs_7_days
+            label_column: is_churned_7_days # Name of column for which we want to find predictions
+            label_value: 1 # Value of label column for which prediction is generated
+            prediction_horizon_days: 7 # Number of days in future for which we want to predict
+            output_profiles_ml_model: &model_name_7_days churn_7_days_model
+            eligible_users:
+            inputs:
+              - packages/base_features/models/rudder_user_base_features
+          preprocessing: &model_prep_configs_7_days
+            ignore_features:
+              - user_email
+              - first_name
+              - last_name
           outputs:
             column_names:
               percentile: &percentile_name_7_days percentile_churn_score_7_days # Name of column in output table having percentile score
               score: churn_score_7_days # Name of column in output table having probabilistic score
             feature_meta_data: &feature_meta_data_7_days
               features:
-                - name: *percentile_name_7_days
+                - name: &percentile_name_7_days percentile_churn_score_7_days # Name of column in output table having percentile score
                   description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
-      <<: *feature_meta_data_7_days
+      <<: &feature_meta_data_7_days
+        features:
+          - name: &percentile_name_7_days percentile_churn_score_7_days # Name of column in output table having percentile score
+            description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
+      contract:
+        is_optional: false
+        is_event_stream: true
+        with_entity_ids: []
+        with_columns:
+          - name: percentile_churn_score_7_days
   - name: &model_name_30_days churn_30_days_model
     model_type: python_model
     model_spec:
@@ -58,7 +78,7 @@ models:
             label_column: is_churned_30_days # Name of column for which we want to find predictions
             label_value: 1 # Value of label column for which prediction is generated
             prediction_horizon_days: 30 # Number of days in future for which we want to predict
-            output_profiles_ml_model: *model_name_30_days # Name of output model based on current model to dinstinguish between multiple models
+            output_profiles_ml_model: &model_name_30_days churn_30_days_model
             eligible_users:
             inputs:
               - packages/base_features/models/rudder_user_base_features
@@ -71,17 +91,37 @@ models:
         inputs:
           - models/rudder_user_base_features
         config:
-          data: *model_data_configs_30_days # Use the same config as training
-          preprocessing: *model_prep_configs_30_days # Use the same config as training
+          data: &model_data_configs_30_days
+            label_column: is_churned_30_days # Name of column for which we want to find predictions
+            label_value: 1 # Value of label column for which prediction is generated
+            prediction_horizon_days: 30 # Number of days in future for which we want to predict
+            output_profiles_ml_model: &model_name_30_days churn_30_days_model
+            eligible_users:
+            inputs:
+              - packages/base_features/models/rudder_user_base_features
+          preprocessing: &model_prep_configs_30_days
+            ignore_features:
+              - user_email
+              - first_name
+              - last_name
           outputs:
             column_names:
               percentile: &percentile_name_30_days percentile_churn_score_30_days # Name of column in output table having percentile score
               score: churn_score_30_days # Name of column in output table having probabilistic score
             feature_meta_data: &feature_meta_data_30_days
               features:
-                - name: *percentile_name_30_days
+                - name: &percentile_name_30_days percentile_churn_score_30_days # Name of column in output table having percentile score
                   description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
-      <<: *feature_meta_data_30_days
+      <<: &feature_meta_data_30_days
+        features:
+          - name: &percentile_name_30_days percentile_churn_score_30_days # Name of column in output table having percentile score
+            description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
+      contract:
+        is_optional: false
+        is_event_stream: true
+        with_entity_ids: []
+        with_columns:
+          - name: percentile_churn_score_30_days
   - name: &model_name_90_days churn_90_days_model
     model_type: python_model
     model_spec:
@@ -99,7 +139,7 @@ models:
             label_column: is_churned_90_days # Name of column for which we want to find predictions
             label_value: 1 # Value of label column for which prediction is generated
             prediction_horizon_days: 90 # Number of days in future for which we want to predict
-            output_profiles_ml_model: *model_name_90_days # Name of output model based on current model to dinstinguish between multiple models
+            output_profiles_ml_model: &model_name_90_days churn_90_days_model
             eligible_users:
             inputs:
               - packages/base_features/models/rudder_user_base_features
@@ -112,14 +152,34 @@ models:
         inputs:
           - models/rudder_user_base_features
         config:
-          data: *model_data_configs_90_days # Use the same config as training
-          preprocessing: *model_prep_configs_90_days # Use the same config as training
+          data: &model_data_configs_90_days
+            label_column: is_churned_90_days # Name of column for which we want to find predictions
+            label_value: 1 # Value of label column for which prediction is generated
+            prediction_horizon_days: 90 # Number of days in future for which we want to predict
+            output_profiles_ml_model: &model_name_90_days churn_90_days_model
+            eligible_users:
+            inputs:
+              - packages/base_features/models/rudder_user_base_features
+          preprocessing: &model_prep_configs_90_days
+            ignore_features:
+              - user_email
+              - first_name
+              - last_name
           outputs:
             column_names:
               percentile: &percentile_name_90_days percentile_churn_score_90_days # Name of column in output table having percentile score
               score: churn_score_90_days # Name of column in output table having probabilistic score
             feature_meta_data: &feature_meta_data_90_days
               features:
-                - name: *percentile_name_90_days
+                - name: &percentile_name_90_days percentile_churn_score_90_days # Name of column in output table having percentile score
                   description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
-      <<: *feature_meta_data_90_days
+      <<: &feature_meta_data_90_days
+        features:
+          - name: &percentile_name_90_days percentile_churn_score_90_days # Name of column in output table having percentile score
+            description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
+      contract:
+        is_optional: false
+        is_event_stream: true
+        with_entity_ids: []
+        with_columns:
+          - name: percentile_churn_score_90_days
