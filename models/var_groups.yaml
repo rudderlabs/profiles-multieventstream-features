@@ -159,7 +159,7 @@ var_groups:
       - entity_var:
           name: avg_session_length_in_sec_overall
           from: models/rsTracksUnionPages
-          select: "avg({{ macro_datediff_with_start_end_and_granularity('second', '{{rsTracksUnionPages.Var(\"session_start_time\")}}', '{{rsTracksUnionPages.Var(\"session_end_time\")}}') }})"
+          select: avg({{ macro_datediff_with_start_end_and_granularity('second', '{{rsTracksUnionPages.Var(\"session_start_time\")}}', '{{rsTracksUnionPages.Var(\"session_end_time\")}}') }})
           where: '{{rsTracksUnionPages.Var("session_row_number")}} = 1 and context_session_id is not null'
           description: Average session length (in seconds) of all the user sessions till date.
           tags:
