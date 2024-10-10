@@ -34,3 +34,4 @@ id_types:
         value: "test@company.com"
 python_requirements:
   - profiles-pycorelib==0.18.*
+  - profiles_mlcorelib>=0.5.4
