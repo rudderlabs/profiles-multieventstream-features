@@ -13,6 +13,7 @@ models:
           percentile:
             name: percentile_churn_score_7_days
             description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
+            is_feature: True
           score:
             name: churn_score_7_days
             is_feature: False
@@ -45,6 +46,7 @@ models:
           percentile:
             name: percentile_churn_score_30_days
             description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
+            is_feature: True
           score:
             name: churn_score_30_days
             is_feature: False
@@ -77,6 +79,7 @@ models:
           percentile:
             name: percentile_churn_score_90_days
             description: "Percentile of churn score. Higher the percentile, higher the probability of churn"
+            is_feature: True
           score:
             name: churn_score_90_days
             is_feature: False
