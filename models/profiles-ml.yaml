@@ -32,7 +32,6 @@ models:
         - entity/user/is_churned_7_days
         - entity/user/is_churned_30_days
         - entity/user/is_churned_90_days
-
   - name: churn_30_days_model
     model_type: propensity
     model_spec:
@@ -65,7 +64,6 @@ models:
         - entity/user/is_churned_7_days
         - entity/user/is_churned_30_days
         - entity/user/is_churned_90_days
-
   - name: churn_90_days_model
     model_type: propensity
     model_spec:

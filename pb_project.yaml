@@ -1,7 +1,7 @@
 # Project name
 name: base_features
 # Project's yaml schema version
-schema_version: 80
+schema_version: 84
 # WH Connection Profile to use.
 connection: dev_wh
 # Model folders to use.
@@ -33,5 +33,5 @@ id_types:
       - type: exclude
         value: "test@company.com"
 python_requirements:
-  - profiles-pycorelib==0.18.*
+  - profiles-pycorelib==0.19.*
   - profiles_mlcorelib>=0.5.6
