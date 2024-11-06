@@ -33,5 +33,5 @@ id_types:
       - type: exclude
         value: "test@company.com"
 python_requirements:
-  - profiles-pycorelib==0.18.*
+  - profiles-pycorelib==0.19.*
   - profiles_mlcorelib>=0.5.6
